@@ -1,0 +1,63 @@
+function whoAmI(city,phone){
+console.log("My Name is ",this.name, 'City is ',city, ' Phone ',phone);
+}
+undefined
+var name = 'Amit';
+undefined
+window.name;
+'Amit'
+whoAmI('Delhi',2222); // window.whoAmI(); // window is become this
+VM253:2 My Name is  Amit City is  Delhi  Phone  2222
+undefined
+var obj = {name:'ram'};
+undefined
+window.obj;
+{name: 'ram'}
+obj;
+{name: 'ram'}
+window.name;
+'Amit'
+window.obj.name;
+'ram'
+obj;
+{name: 'ram'}
+obj.whoAmI
+undefined
+obj.whoAmI();
+VM789:1 Uncaught TypeError: obj.whoAmI is not a function
+    at <anonymous>:1:5
+(anonymous) @ VM789:1
+whoAmI();
+VM253:2 My Name is  Amit City is  undefined  Phone  undefined
+undefined
+whoAmI('Delhi',2222);
+VM253:2 My Name is  Amit City is  Delhi  Phone  2222
+undefined
+var fnWithMyObjectBinding = whoAmI.bind(obj);
+undefined
+fnWithMyObjectBinding('Mumbai',4444);
+VM253:2 My Name is  ram City is  Mumbai  Phone  4444
+undefined
+whoAmI.call(obj);
+VM253:2 My Name is  ram City is  undefined  Phone  undefined
+undefined
+whoAmI.call(obj,'Delhi',3333);
+VM253:2 My Name is  ram City is  Delhi  Phone  3333
+undefined
+fnWithMyObjectBinding('Mumbai',4444);
+VM253:2 My Name is  ram City is  Mumbai  Phone  4444
+undefined
+whoAmI('Delhi',2222);
+VM253:2 My Name is  Amit City is  Delhi  Phone  2222
+undefined
+var arr = ['Delhi',3333];
+whoAmI.apply(obj,arr);
+VM253:2 My Name is  ram City is  Delhi  Phone  3333
+undefined
+whoAmI
+ƒ whoAmI(city,phone){
+console.log("My Name is ",this.name, 'City is ',city, ' Phone ',phone);
+}
+console.dir(whoAmI);
+VM1219:1 ƒ whoAmI(city,phone)arguments: nullcaller: nulllength: 2name: "whoAmI"prototype: constructor: ƒ whoAmI(city,phone)[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()[[FunctionLocation]]: VM253:1[[Prototype]]: ƒ ()apply: ƒ apply()arguments: (...)bind: ƒ bind()call: ƒ call()caller: (...)constructor: ƒ Function()arguments: (...)caller: (...)length: 1name: "Function"prototype: ƒ ()[[Prototype]]: ƒ ()[[Scopes]]: Scopes[0]length: 0name: ""toString: ƒ toString()Symbol(Symbol.hasInstance): ƒ [Symbol.hasInstance]()get arguments: ƒ ()set arguments: ƒ ()get caller: ƒ ()set caller: ƒ ()[[FunctionLocation]]: ​[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()[[Scopes]]: Scopes[0][[Scopes]]: Scopes[1]
+undefined

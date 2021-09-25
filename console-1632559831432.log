@@ -1,0 +1,126 @@
+function Person(name, city){
+    this.name = name;
+    this.city = city;
+}
+Person.prototype.print= function(){
+console.log(`Name ${this.name} City ${this.city}`);
+}
+Person.prototype.disp = function(){
+console.log(`Name ${this.name.toUpperCase()} City ${this.city.toUpperCase()}`);
+}
+ƒ (){
+console.log(`Name ${this.name.toUpperCase()} City ${this.city.toUpperCase()}`);
+}
+Person;
+ƒ Person(name, city){
+    this.name = name;
+    this.city = city;
+}
+Person.prototype
+{print: ƒ, disp: ƒ, constructor: ƒ}disp: ƒ ()print: ƒ ()constructor: ƒ Person(name, city)[[Prototype]]: Object
+Person.prototype.__proto__
+{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}constructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+Person.prototype.__proto__ == Object.prototype;
+true
+function Employee(id,salary){
+    this.id = id;
+    this.salary = salary;
+}
+Employee.prototype.print = function(){
+console.log(`Id ${this.id} Salary ${this.salary}`);
+}
+Employee.prototype.tax = function(){
+    return this.salary * 0.10;
+}
+ƒ (){
+    return this.salary * 0.10;
+}
+Employee.prototype.__proto__ == Object.prototype;
+true
+Employee.prototype.__proto__ = Person.prototype;
+{print: ƒ, disp: ƒ, constructor: ƒ}
+Employee.prototype.__proto__ == Object.prototype;
+false
+Employee.prototype.__proto__ == Person.prototype;
+true
+Person.prototype.__proto__ == Object.prototype;
+true
+var ram = new Employee(1001, 9999);
+undefined
+ram;
+Employee {id: 1001, salary: 9999}
+ram.print();
+VM1157:6 Id 1001 Salary 9999
+undefined
+ram.disp();
+VM479:9 Uncaught TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at Employee.Person.disp (<anonymous>:9:31)
+    at <anonymous>:1:5
+Person.disp @ VM479:9
+(anonymous) @ VM1579:1
+undefined.toUpperCase();
+VM1624:1 Uncaught TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at <anonymous>:1:11
+(anonymous) @ VM1624:1
+function Employee(id,salary,name ,city){
+    Person.call(this,name, city);
+    this.id = id;
+    this.salary = salary;
+}
+Employee.prototype.print = function(){
+console.log(`Id ${this.id} Salary ${this.salary}`);
+}
+Employee.prototype.tax = function(){
+    return this.salary * 0.10;
+}
+ƒ (){
+    return this.salary * 0.10;
+}
+var ram = new Employee(1001, 9999, 'Ram', 'Mumbai');
+undefined
+ram;
+Employee {name: 'Ram', city: 'Mumbai', id: 1001, salary: 9999}
+ram.print();
+VM1781:7 Id 1001 Salary 9999
+undefined
+Employee.prototype.print
+ƒ (){
+console.log(`Id ${this.id} Salary ${this.salary}`);
+}
+Employee.prototype.__proto__
+{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+Employee.prototype.__proto__ == Person.prototype;
+false
+Employee.prototype.__proto__ == Object.prototype;
+true
+Employee.prototype.__proto__ = Person.prototype;
+{print: ƒ, disp: ƒ, constructor: ƒ}
+ram.disp();
+VM479:9 Name RAM City MUMBAI
+undefined
+function Employee(id,salary,name ,city){
+    Person.call(this,name, city);
+    this.id = id;
+    this.salary = salary;
+}
+Employee.prototype.print = function(){
+Person.prototype.print.call(this); // super.print()
+console.log(`Id ${this.id} Salary ${this.salary}`);
+}
+Employee.prototype.tax = function(){
+    return this.salary * 0.10;
+}
+ƒ (){
+    return this.salary * 0.10;
+}
+Employee.prototype.__proto__ = Person.prototype;
+{print: ƒ, disp: ƒ, constructor: ƒ}
+ram.print();
+VM1781:7 Id 1001 Salary 9999
+undefined
+var ram = new Employee(1001,6666,'Ram Kumar','Delhi');
+undefined
+ram.print();
+VM479:6 Name Ram Kumar City Delhi
+VM2322:8 Id 1001 Salary 6666
+undefined
