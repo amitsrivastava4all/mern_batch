@@ -1,0 +1,92 @@
+function Emp(id,name,salary){
+this.id = id;
+this.name = name;
+this.salary = salary;
+}
+undefined
+var ram = new Emp(1001, "Ram",9999);
+undefined
+var obj ;
+Object.create(obj,ram);
+VM448:2 Uncaught TypeError: Object prototype may only be an Object or null: undefined
+    at Function.create (<anonymous>)
+    at <anonymous>:2:8
+(anonymous) @ VM448:2
+var obj ;
+obj  = Object.create(ram);
+Emp {}
+obj;
+Emp {}[[Prototype]]: Empid: 1001name: "Ram"salary: 9999[[Prototype]]: Object
+obj.__proto__
+Emp {id: 1001, name: 'Ram', salary: 9999}
+obj.__proto__.__proto__
+{constructor: ƒ}
+obj.__proto__.__proto__.__proto__
+{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+obj.__proto__.__proto__.__proto__.__proto__
+null
+var obj ;
+obj  = Object.create(ram,{bonus:111});
+VM699:2 Uncaught TypeError: Property description must be an object: 111
+    at Function.create (<anonymous>)
+    at <anonymous>:2:15
+(anonymous) @ VM699:2
+var obj2 ;
+Object.assign(obj2,ram);
+VM783:2 Uncaught TypeError: Cannot convert undefined or null to object
+    at Function.assign (<anonymous>)
+    at <anonymous>:2:8
+(anonymous) @ VM783:2
+var obj2 = {} ;
+obj2 = Object.assign(obj2,ram);
+{id: 1001, name: 'Ram', salary: 9999}
+obj2;
+{id: 1001, name: 'Ram', salary: 9999}id: 1001name: "Ram"salary: 9999[[Prototype]]: Object
+var obj3 ;
+obj3 = Object.create(ram);
+Emp {}
+obj3;
+Emp {}[[Prototype]]: Empid: 1001name: "Ram"salary: 9999[[Prototype]]: Objectconstructor: ƒ Emp(id,name,salary)[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+var obj5 = Object.assign({},ram,{bonus:9999}, {city:'Delhi'});
+undefined
+obj5;
+{id: 1001, name: 'Ram', salary: 9999, bonus: 9999, city: 'Delhi'}bonus: 9999city: "Delhi"id: 1001name: "Ram"salary: 9999[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+var obj6 = {...obj3, ...ram, ...obj};
+undefined
+obj6;
+{id: 1001, name: 'Ram', salary: 9999}
+obj3;
+Emp {}
+ram;
+Emp {id: 1001, name: 'Ram', salary: 9999}
+obj;
+Emp {}
+var obj6 = {...obj3, ...ram, ...{bonus:555}};
+undefined
+obj6;
+{id: 1001, name: 'Ram', salary: 9999, bonus: 555}bonus: 555id: 1001name: "Ram"salary: 9999[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+ram;
+Emp {id: 1001, name: 'Ram', salary: 9999}id: 1001name: "Ram"salary: 9999[[Prototype]]: Objectconstructor: ƒ Emp(id,name,salary)[[Prototype]]: Objectconstructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()__proto__: (...)get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+console.log("Ram is "+ram);
+VM1542:1 Ram is [object Object]
+undefined
+console.log("ram is ",ram);
+VM1620:1 ram is  Emp {id: 1001, name: 'Ram', salary: 9999}
+undefined
+console.log("Ram is "+ram.toString());
+VM1768:1 Ram is [object Object]
+undefined
+Emp.prototype.toString = function(){
+return "ID "+this.id + " Name "+this.name;
+}
+ƒ (){
+return "ID "+this.id + " Name "+this.name;
+}
+var ram =new Emp(1001,"Abcd",999);
+undefined
+console.log("Ram is "+ram);
+VM2032:1 Ram is ID 1001 Name Abcd
+undefined
+console.log("Ram is "+ram.toString());
+VM2086:1 Ram is ID 1001 Name Abcd
+undefined

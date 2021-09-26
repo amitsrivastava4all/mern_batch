@@ -1,0 +1,40 @@
+class A{
+    constructor(){
+    console.log(" i am A Cons ");
+    }
+    print(){
+    console.log(" i am a print");
+}
+}
+class B extends A{
+    constructor(){
+    
+    console.log(" I am B cons ");
+super(); 
+}
+print(){
+    super.print();
+    console.log(" i am b print");
+}
+}
+var b = new B();
+b.print();
+
+
+
+
+
+
+VM16:12  I am B cons 
+VM16:3  i am A Cons 
+VM16:6  i am a print
+VM16:17  i am b print
+undefined
+A.prototype
+{constructor: ƒ, print: ƒ}
+B.prototype
+A {constructor: ƒ, print: ƒ}
+B.prototype.__proto__ == A.prototype
+true
+A.prototype.__proto__ == Object.prototype
+true

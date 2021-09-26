@@ -1,0 +1,198 @@
+class Emp{
+constructor(id, name, salary){
+    this.id = id;
+    this.name = name;
+    this.salary = salary;
+}
+print(){
+    console.log(` id ${this.id} Name ${this.name}`);
+}
+}
+undefined
+var ram = new Emp(1001, "Ram",9999);
+undefined
+ram;
+Emp {id: 1001, name: 'Ram', salary: 9999}
+typeof ram;
+'object'
+ram instanceof Emp;
+true
+typeof Emp;
+'function'
+Emp.prototype
+{constructor: ƒ, print: ƒ}
+Emp.prototype.show  = function(){
+return "I am the Show ";
+}
+ƒ (){
+return "I am the Show ";
+}
+Emp.prototype;
+{show: ƒ, constructor: ƒ, print: ƒ}
+var ram = new Emp(1001, "Ram",9999);
+undefined
+ram.show();
+'I am the Show '
+class A{
+    constructor(){
+    console.log(" i am A Cons ");
+    }
+    print(){
+    console.log(" i am a print");
+}
+}
+class B extends A{
+    constructor(){
+    super(); 
+    console.log(" I am B cons ");
+}
+print(){
+    super.print();
+    console.log(" i am b print");
+}
+}
+var b = new B();
+b.print();
+
+
+
+
+
+
+VM1222:3  i am A Cons 
+VM1222:12  I am B cons 
+VM1222:6  i am a print
+VM1222:16  i am b print
+undefined
+class A{
+    constructor(){
+    console.log(" i am A Cons ");
+    }
+    print(){
+    console.log(" i am a print");
+}
+}
+class B extends A{
+    constructor(){
+    super(); 
+    console.log(" I am B cons ");
+}
+print(){
+    super.print();
+    console.log(" i am b print");
+}
+}
+var b = new B();
+b.print();
+
+
+
+
+
+
+VM1226:3  i am A Cons 
+VM1226:12  I am B cons 
+VM1226:6  i am a print
+VM1226:16  i am b print
+undefined
+class A{
+    constructor(){
+    console.log(" i am A Cons ");
+    }
+    print(){
+    console.log(" i am a print");
+}
+}
+class B extends A{
+    constructor(){
+    
+    console.log(" I am B cons ");
+super(); 
+}
+print(){
+    super.print();
+    console.log(" i am b print");
+}
+}
+var b = new B();
+b.print();
+
+
+
+
+
+
+VM1240:12  I am B cons 
+VM1240:3  i am A Cons 
+VM1240:6  i am a print
+VM1240:17  i am b print
+undefined
+class A{
+    constructor(){
+    console.log(" i am A Cons ");
+    }
+    print(){
+    console.log(" i am a print");
+}
+}
+class B extends A{
+    constructor(){
+    
+    console.log(" I am B cons ");
+super(); 
+}
+print(){
+    
+    console.log(" i am b print");
+super.print();
+}
+}
+var b = new B();
+b.print();
+
+
+
+
+
+
+VM1248:12  I am B cons 
+VM1248:3  i am A Cons 
+VM1248:17  i am b print
+VM1248:6  i am a print
+undefined
+class T{
+    static show(){
+    console.log("T Static is Called ");
+}
+}
+
+undefined
+T.show();
+VM1383:3 T Static is Called 
+undefined
+B.print();
+VM1444:1 Uncaught TypeError: B.print is not a function
+    at <anonymous>:1:3
+(anonymous) @ VM1444:1
+class TriMath{
+static sin(){}
+}
+undefined
+class V{
+static g;
+}
+undefined
+class V{
+static var g;
+}
+VM1569:2 Uncaught SyntaxError: Unexpected identifier
+V.g=233
+233
+V.g;
+233
+V;
+class V{
+static g;
+}
+V.g = "jhfjdshg";
+'jhfjdshg'

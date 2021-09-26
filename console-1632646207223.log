@@ -1,0 +1,42 @@
+function Person(name, city){
+    this.name = name;
+    this.city = city;
+}
+Person.prototype.print= function(){
+console.log(`Name ${this.name} City ${this.city}`);
+}
+Person.prototype.disp = function(){
+console.log(`Name ${this.name.toUpperCase()} City ${this.city.toUpperCase()}`);
+}
+ƒ (){
+console.log(`Name ${this.name.toUpperCase()} City ${this.city.toUpperCase()}`);
+}
+function Employee(id,salary,name ,city){
+    Person.call(this,name, city);
+    this.id = id;
+    this.salary = salary;
+}
+Employee.prototype.print = function(){
+Person.prototype.print.call(this); // super.print()
+console.log(`Id ${this.id} Salary ${this.salary}`);
+}
+Employee.prototype.tax = function(){
+    return this.salary * 0.10;
+}
+ƒ (){
+    return this.salary * 0.10;
+}
+var ram = new Employee(1001,6666,'Ram Kumar','Delhi');
+undefined
+ram.print();
+VM90:6 Name Ram Kumar City Delhi
+VM128:8 Id 1001 Salary 6666
+undefined
+Object.getPrototypeOf(ram)
+{print: ƒ, tax: ƒ, constructor: ƒ}
+ram.__proto__
+{print: ƒ, tax: ƒ, constructor: ƒ}
+ram.__proto__ == Employee.prototype
+true
+ram.__proto__ == Object.getPrototypeOf(ram);
+true

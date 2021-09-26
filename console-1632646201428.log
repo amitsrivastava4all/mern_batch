@@ -1,0 +1,68 @@
+function fn(){
+return fn;
+}
+undefined
+var x = fn();
+undefined
+x;
+ƒ fn(){
+return fn;
+}
+typeof x;
+'function'
+var y = new fn();
+undefined
+y;
+ƒ fn(){
+return fn;
+}
+function disp(){
+console.log("I am Disp");
+}
+undefined
+disp();
+VM404:2 I am Disp
+undefined
+function disp(){
+console.log("I am Disp", this);
+}
+undefined
+var e = new disp();
+VM485:2 I am Disp disp {}
+undefined
+e;
+disp {}
+fn;
+ƒ fn(){
+return fn;
+}
+function fn(){
+console.log('this is ',this);
+return fn;
+}
+undefined
+fn();
+VM623:2 this is  Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+ƒ fn(){
+console.log('this is ',this);
+return fn;
+}
+new fn();
+VM623:2 this is  fn {}
+ƒ fn(){
+console.log('this is ',this);
+return fn;
+}
+new fn() === fn();
+VM623:2 this is  fn {}
+VM623:2 this is  Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+true
+function fn(){
+console.log('this is ',this);
+//return fn;
+}
+undefined
+new fn() === fn();
+VM728:2 this is  fn {}
+VM728:2 this is  Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+false
