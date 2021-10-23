@@ -1,0 +1,137 @@
+function heavyTask(){
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=10000; j++){
+}
+}
+console.log("Heavy Task Done ");
+}
+console.log("Start ");
+heavyTask();
+console.log("End ");
+VM408:8 Start 
+VM408:6 Heavy Task Done 
+VM408:10 End 
+undefined
+function heavyTask(){
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=30000; j++){
+}
+}
+console.log("Heavy Task Done ");
+}
+console.log("Start ");
+heavyTask();
+console.log("End ");
+VM414:8 Start 
+VM414:6 Heavy Task Done 
+VM414:10 End 
+undefined
+function heavyTask(){
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=50000; j++){
+}
+}
+console.log("Heavy Task Done ");
+}
+console.log("Start ");
+heavyTask();
+console.log("End ");
+VM420:8 Start 
+VM420:6 Heavy Task Done 
+VM420:10 End 
+undefined
+function heavyTask(){
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=100000; j++){
+}
+}
+console.log("Heavy Task Done ");
+}
+console.log("Start ");
+heavyTask();
+console.log("End ");
+VM426:8 Start 
+VM426:6 Heavy Task Done 
+VM426:10 End 
+undefined
+function heavyTask(){
+setTimeout(()=>{
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=100000; j++){
+}
+}
+console.log("Heavy Task Done ");
+},9000);
+}
+console.log("Start ");
+heavyTask();
+console.log("End ");
+VM577:10 Start 
+VM577:12 End 
+undefined
+VM577:7 Heavy Task Done 
+function heavyTask(){
+setTimeout(()=>{
+console.log("9 Sec Over  I am Back");
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=100000; j++){
+}
+}
+console.log("Heavy Task Done ");
+},9000);
+console.log("Heavy Task Logic Run after 9 sec Doing Nothing Now ");
+}
+console.log("Start ");
+heavyTask();
+console.log("End ");
+VM688:12 Start 
+VM688:10 Heavy Task Logic Run after 9 sec Doing Nothing Now 
+VM688:14 End 
+undefined
+VM688:3 9 Sec Over  I am Back
+VM688:8 Heavy Task Done 
+function heavyTask(){
+setTimeout(()=>{
+console.log("9 Sec Over  I am Back");
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=100000; j++){
+}
+}
+console.log("Heavy Task Done ");
+},0);
+console.log("Heavy Task Logic Run after 9 sec Doing Nothing Now ");
+}
+console.log("Start ");
+heavyTask();
+console.log("End ");
+VM699:12 Start 
+VM699:10 Heavy Task Logic Run after 9 sec Doing Nothing Now 
+VM699:14 End 
+undefined
+VM699:3 9 Sec Over  I am Back
+VM699:8 Heavy Task Done 
+function getData(val){
+console.log("Finally get the Async Data ",val);
+}
+function heavyTask(fn){
+setTimeout(()=>{
+console.log("9 Sec Over  I am Back");
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=100000; j++){
+}
+}
+//console.log("Heavy Task Done ");
+//return "Heavy Task Done ";
+fn("Heavy Task Done ");
+},9000);
+console.log("Heavy Task Logic Run after 9 sec Doing Nothing Now ");
+}
+console.log("Start ");
+heavyTask(getData);
+console.log("End ");
+VM910:17 Start 
+VM910:15 Heavy Task Logic Run after 9 sec Doing Nothing Now 
+VM910:19 End 
+undefined
+VM910:6 9 Sec Over  I am Back
+VM910:2 Finally get the Async Data  Heavy Task Done 
