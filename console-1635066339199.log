@@ -1,0 +1,484 @@
+function getData(val){
+console.log("Finally get the Async Data ",val);
+}
+function heavyTask(fn){
+setTimeout(()=>{
+console.log("9 Sec Over  I am Back");
+for(let i = 1; i<=100000; i++){
+for(let j = 1; j<=100000; j++){
+}
+}
+//console.log("Heavy Task Done ");
+//return "Heavy Task Done ";
+fn("Heavy Task Done ");
+},9000);
+console.log("Heavy Task Logic Run after 9 sec Doing Nothing Now ");
+}
+console.log("Start ");
+heavyTask(getData);
+console.log("End ");
+VM162:17 Start 
+VM162:15 Heavy Task Logic Run after 9 sec Doing Nothing Now 
+VM162:19 End 
+undefined
+VM162:6 9 Sec Over  I am Back
+VM162:2 Finally get the Async Data  Heavy Task Done 
+function cube(num, callBackFn){
+setTimeout(()=>callBackFn(num**3),5000);
+}
+function cubeResult(result){
+    console.log("result is ",result);
+}
+cube(5,cubeResult);
+undefined
+VM716:5 result is  125
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>resolve(num**3),5000); // Async Task
+});
+return promise;
+}
+
+let pr = cube(5);
+console.log("Promise ",pr);
+pr.then(data=>console.log("Data Rec ",data)).catch(err=>console.log("Rejected ",err));
+ // Pending State // Complete/Finish // Rejected
+console.log("I am Done ");
+VM1574:9 Promise  Promise {<pending>}
+VM1574:12 I am Done 
+undefined
+VM1574:10 Data Rec  125
+pr;
+Promise {<fulfilled>: 125}
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>reject(num**3),5000); // Async Task
+});
+return promise;
+}
+
+let pr = cube(5);
+console.log("Promise ",pr);
+pr.then(data=>console.log("Data Rec ",data)).catch(err=>console.log("Rejected ",err));
+ // Pending State // Complete/Finish // Rejected
+console.log("I am Done ");
+VM1692:9 Promise  Promise {<pending>}
+VM1692:12 I am Done 
+undefined
+VM1692:10 Rejected  125
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided");
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+let pr = cube(7);
+console.log("Promise ",pr);
+pr.then(data=>console.log("Data Rec ",data)).catch(err=>console.log("Rejected ",err));
+ // Pending State // Complete/Finish // Rejected
+console.log("I am Done ");
+VM1895:16 Promise  Promise {<pending>}
+VM1895:19 I am Done 
+undefined
+VM1895:17 Data Rec  343
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided");
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+let pr = cube(-7);
+console.log("Promise ",pr);
+pr.then(data=>console.log("Data Rec ",data)).catch(err=>console.log("Rejected ",err));
+ // Pending State // Complete/Finish // Rejected
+console.log("I am Done ");
+VM1901:16 Promise  Promise {<pending>}
+VM1901:19 I am Done 
+undefined
+VM1901:17 Rejected  0 or negative cube not provided
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided");
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+let pr = cube(-7);
+console.log("Promise ",pr);
+pr.then(data=>console.log("Data Rec ",data)).catch(err=>console.log("Rejected ",err)).finally(()=>console.log("I execute Always "));
+ // Pending State // Complete/Finish // Rejected
+console.log("I am Done ");
+VM1975:16 Promise  Promise {<pending>}[[Prototype]]: Promise[[PromiseState]]: "pending"[[PromiseResult]]: undefined
+VM1975:19 I am Done 
+undefined
+VM1975:17 Rejected  0 or negative cube not provided
+VM1975:17 I execute Always 
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided");
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+let pr = cube(7);
+console.log("Promise ",pr);
+pr.then(data=>console.log("Data Rec ",data)).catch(err=>console.log("Rejected ",err)).finally(()=>console.log("I execute Always "));
+ // Pending State // Complete/Finish // Rejected
+console.log("I am Done ");
+VM1981:16 Promise  Promise {<pending>}
+VM1981:19 I am Done 
+undefined
+VM1981:17 Data Rec  343
+VM1981:17 I execute Always 
+let c = setInterval(()=>console.log("I will call after some time"),3000);
+undefined
+c;
+9
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+VM2161:1 I will call after some time
+clearInterval(c);
+undefined
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided");
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+const pr = Promise.all([cube(3), cube(5), cube(7)]);
+pr.then(results=>console.log(results))
+.catch(err=>console.log(err));
+VM2705:1 Uncaught SyntaxError: Identifier 'pr' has already been declared
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided");
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.all([cube(3), cube(5), cube(7)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM2714:16 (3) [27, 125, 343]
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided");
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.all([cube(3), cube(-5), cube(-7)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM2730:17 0 or negative cube not provided
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.all([cube(3), cube(-5), cube(-7)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM2749:17 0 or negative cube not provided -5
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.allSettled([cube(3), cube(-5), cube(-7)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM2765:16 (3) [{…}, {…}, {…}]0: {status: 'fulfilled', value: 27}1: {status: 'rejected', reason: '0 or negative cube not provided -5'}2: {status: 'rejected', reason: '0 or negative cube not provided -7'}length: 3[[Prototype]]: Array(0)
+function cube(num){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},5000); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.race([cube(3), cube(-5), cube(-7)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM2922:16 27
+function cube(num, time){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},time); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.race([cube(3,9000), cube(-5,1000), cube(-7,0)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM2980:17 0 or negative cube not provided -7
+function cube(num, time){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},time); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.race([cube(3,9000), cube(-5,1000), cube(-7,4000)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM2992:17 0 or negative cube not provided -5
+function cube(num, time){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},time); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.any([cube(3,9000), cube(-5,1000), cube(-7,4000)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM3008:16 27
+function cube(num, time){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},time); // Async Task
+});
+return promise;
+}
+
+const pr2 = Promise.any([cube(3,9000), cube(-5,1000), cube(7,4000)]);
+pr2.then(results=>console.log(results))
+.catch(err=>console.log(err));
+Promise {<pending>}
+VM3015:16 343
+function cube(num, time){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},time); // Async Task
+});
+return promise;
+}
+
+const promise = cube(3,1000);
+promise.then(data=>{
+    const p = cube(data,4000);
+    p.then(data=>{
+            const p2 = cube(data,5000);
+            p2.then(data=>console.log("Final Cube is ", data)).catch(err=>console.log(err));
+}).catch(err=>console.log(err));
+}).catch(err=>console.log(err));
+Promise {<pending>}
+VM3628:20 Final Cube is  7625597484987
+function cube(num, time){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},time); // Async Task
+});
+return promise;
+}
+
+async function total(){
+    const r1 = await cube(3,1000);
+    console.log(r1);
+    const r2 = await cube(r1,4000);
+    console.log(r2);
+    const r3 = await cube(r3,5000);
+    console.log(r1);
+    return r1 + r2 + r3; // Wrap in Promise
+}
+
+total().then(data=>console.log("total is ",data)).catch(err=>console.log(err));
+Promise {<pending>}
+VM4194:17 27
+VM4194:19 19683
+VM4194:25 ReferenceError: Cannot access 'r3' before initialization
+    at total (<anonymous>:20:27)
+function cube(num, time){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},time); // Async Task
+});
+return promise;
+}
+
+async function total(){
+    const r1 = await cube(3,1000);
+    console.log(r1);
+    const r2 = await cube(r1,4000);
+    console.log(r2);
+    const r3 = await cube(r2,5000);
+    console.log(r1);
+    return r1 + r2 + r3; // Wrap in Promise
+}
+
+total().then(data=>console.log("total is ",data)).catch(err=>console.log(err));
+Promise {<pending>}
+VM4212:17 27
+VM4212:19 19683
+VM4212:21 27
+VM4212:25 total is  7625597504697
+function cube(num, time){
+const promise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+    if(num<=0){
+    reject("0 or negative cube not provided "+num);
+}
+else{
+    resolve(num**3);
+}
+},time); // Async Task
+});
+return promise;
+}
+
+async function total(){
+    const r1 = await cube(3,1000);
+    console.log(r1);
+    const r2 = await cube(r1,4000);
+    console.log(r2);
+    const r3 = await cube(r2,5000);
+    console.log(r3);
+    return r1 + r2 + r3; // Wrap in Promise
+}
+
+total().then(data=>console.log("total is ",data)).catch(err=>console.log(err));
+Promise {<pending>}
+VM4227:17 27
+VM4227:19 19683
+VM4227:21 7625597484987
+VM4227:25 total is  7625597504697
